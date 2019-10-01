@@ -9,20 +9,40 @@ public class Main
 		String unText2 = Words.unText.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "");
 		String[] words = unText2.split(" +");
 
-				// System.out.println(words);
+		// *** prints Array ***
+		// for(int i=0; i < words.length; i++){
+		// 	System.out.println(words[i]);
+		// }
 
-		ArrayList<Words> wordsArrayList = new ArrayList<Words>();
+		// *** Convert Array --> ArrayList ***
+		ArrayList<String> wordsArrayList = new ArrayList<String>();
 		wordsArrayList.addAll(Arrays.asList(words));
 
-		for (Words w : wordsArrayList)
-		{ //      ^------------|
-			System.out.println(w);
+		// *** prints ArrayList ***
+		// for (String w : wordsArrayList)
+		// { //      ^------------|
+		// 	System.out.println(w);
+		// }
+
+		HashMap<Integer, String> wordsHashMap = new HashMap<Integer, String>();
+
+		// *** Convert ArrayList --> HashMap ***
+		int hashcount = 0;
+		for (String w : wordsArrayList)
+		{
+			// put = if key does not exist, add it to the hashmap
+			// 		 if key does exist, replace 
+			wordsHashMap.put(hashcount, w);
+			hashcount++;
 		}
 
-		// HashMap<String, Words> wordsHashMap = new HashMap<String, Words>();
+		// System.out.println(wordsHashMap.size());
 
-		// System.out.println(wordsHashMap.get());
-
+		// *** prints HashMap ***
+		for (Integer i : wordsHashMap.keySet())
+		{
+			System.out.println("key: " + i + " value: " + wordsHashMap.get(i));
+		}
 
 		// for(int i=0; i < words.length; i++){
 		// 	System.out.println(words[i]);
