@@ -43,19 +43,44 @@ public class Main
 			// wordsHashMap.put(hashcount, w);
 			// hashcount++;
 		}
+   
+        // int maxValueInMap=(Collections.max(wordsHashMap.values()));  // This will return max value in the Hashmap
+        // for (HashMap.Entry<String, Integer> entry : wordsHashMap.entrySet()) {  // Itrate through hashmap
+        //     if (entry.getValue()==maxValueInMap) 
+        //     {
+        //         System.out.println(entry.getKey());    // Print the key with max value
+        //     }
+        // }
+
+		// HashMap.Entry<String, Integer> maxEntry = null;
+
+		// for (HashMap.Entry<String, Integer> entry : wordsHashMap.entrySet())
+		// {
+		//     if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+		//     {
+		//         maxEntry = entry;
+		//         System.out.println(maxEntry);
+		//     }
+		// }
 
 		// System.out.println(wordsHashMap.size());
 
-		// *** prints HashMap with keys ***
+		// *** prints HashMap ***
+		int maxValueInMap=(Collections.max(wordsHashMap.values()));
 		for (String st : wordsHashMap.keySet())
 		{
-			System.out.println("word: " + st + " occurances: " + wordsHashMap.get(st));
+			if (wordsHashMap.get(st) == maxValueInMap)
+			{
+				System.out.println(st + " occurances: " + wordsHashMap.get(st));
+			} else if (wordsHashMap.get(st) < maxValueInMap)
+			{
+				System.out.println(st + " occurances: " + wordsHashMap.get(st));
+			}
 		}
 
 		// for(int i=0; i < words.length; i++){
 		// 	System.out.println(words[i]);
 		// }
 
-		// HashMap<Integer, String>
 	}
 }
