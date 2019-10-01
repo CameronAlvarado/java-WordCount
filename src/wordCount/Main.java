@@ -24,24 +24,32 @@ public class Main
 		// 	System.out.println(w);
 		// }
 
-		HashMap<Integer, String> wordsHashMap = new HashMap<Integer, String>();
+		HashMap<String, Integer> wordsHashMap = new HashMap<String, Integer>();
 
 		// *** Convert ArrayList --> HashMap ***
-		int hashcount = 0;
+		// int hashcount = 0;
 		for (String w : wordsArrayList)
 		{
+			if (!wordsHashMap.containsKey(w))
+			{
+				wordsHashMap.put(w, 1);
+			}
+			else
+			{
+				wordsHashMap.put(w, wordsHashMap.get(w) + 1);
+			}
 			// put = if key does not exist, add it to the hashmap
 			// 		 if key does exist, replace 
-			wordsHashMap.put(hashcount, w);
-			hashcount++;
+			// wordsHashMap.put(hashcount, w);
+			// hashcount++;
 		}
 
 		// System.out.println(wordsHashMap.size());
 
-		// *** prints HashMap ***
-		for (Integer i : wordsHashMap.keySet())
+		// *** prints HashMap with keys ***
+		for (String st : wordsHashMap.keySet())
 		{
-			System.out.println("key: " + i + " value: " + wordsHashMap.get(i));
+			System.out.println("word: " + st + " occurances: " + wordsHashMap.get(st));
 		}
 
 		// for(int i=0; i < words.length; i++){
