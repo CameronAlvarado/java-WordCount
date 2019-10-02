@@ -9,26 +9,11 @@ public class Main
 		String unText2 = Words.unText.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "");
 		String[] words = unText2.split(" +");
 
-		// *** prints Array ***
-		// for(int i=0; i < words.length; i++){
-		// 	System.out.println(words[i]);
-		// }
-
-		// *** Convert Array --> ArrayList ***
-		ArrayList<String> wordsArrayList = new ArrayList<String>();
-		wordsArrayList.addAll(Arrays.asList(words));
-
-		// *** prints ArrayList ***
-		// for (String w : wordsArrayList)
-		// { //      ^------------|
-		// 	System.out.println(w);
-		// }
-
-		HashMap<String, Integer> wordsHashMap = new HashMap<String, Integer>();
+		HashMap<String, Integer> wordsHashMap = new HashMap<>();
 
 		// *** Convert ArrayList --> HashMap ***
 		// int hashcount = 0;
-		for (String w : wordsArrayList)
+		for (String w : words)
 		{
 			if (!wordsHashMap.containsKey(w))
 			{
@@ -44,39 +29,39 @@ public class Main
 			// hashcount++;
 		}
    
-        // int maxValueInMap=(Collections.max(wordsHashMap.values()));  // This will return max value in the Hashmap
-        // for (HashMap.Entry<String, Integer> entry : wordsHashMap.entrySet()) {  // Itrate through hashmap
-        //     if (entry.getValue()==maxValueInMap) 
-        //     {
-        //         System.out.println(entry.getKey());    // Print the key with max value
-        //     }
-        // }
+				// sort HashMap
+		ArrayList<HashMap.Entry<String, Integer>> sortedMap = new ArrayList<>();
+		sortedMap.addAll(wordsHashMap.entrySet());
 
-		// HashMap.Entry<String, Integer> maxEntry = null;
-
-		// for (HashMap.Entry<String, Integer> entry : wordsHashMap.entrySet())
-		// {
-		//     if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
-		//     {
-		//         maxEntry = entry;
-		//         System.out.println(maxEntry);
-		//     }
-		// }
-
-		// System.out.println(wordsHashMap.size());
-
-		// *** prints HashMap ***
-		int maxValueInMap=(Collections.max(wordsHashMap.values()));
-		for (String st : wordsHashMap.keySet())
+		Collections.sort(sortedMap, new Comparator<HashMap.Entry<String, Integer>>()
 		{
-			if (wordsHashMap.get(st) == maxValueInMap)
+			public int compare(HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2)
 			{
-				System.out.println(st + " occurances: " + wordsHashMap.get(st));
-			} else if (wordsHashMap.get(st) < maxValueInMap)
+				return o2.getValue() - o1.getValue();
+				// return o2.getValue().getAvgWeight() - o1.getValue().getAvgWeight();			
+			}
+		});
+
+		int count = 0;
+
+		for (HashMap.Entry<String, Integer> w : sortedMap)
+		{
+			if (count <= 49)
 			{
-				System.out.println(st + " occurances: " + wordsHashMap.get(st));
+				System.out.println("word: " + w.getKey() + " value: " + w.getValue());
+				count++;
 			}
 		}
+
+		// *** prints HashMap ***
+		// int maxValueInMap=(Collections.max(wordsHashMap.values()));
+		// for (String st : wordsHashMap.keySet())
+		// {
+		// 	if (wordsHashMap.get(st) == maxValueInMap)
+		// 	{
+		// 		System.out.println(st + " occurances: " + wordsHashMap.get(st));
+		// 	}
+		// }
 
 		// for(int i=0; i < words.length; i++){
 		// 	System.out.println(words[i]);
